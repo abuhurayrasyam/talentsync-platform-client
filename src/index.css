@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+a.active{
+    @apply bg-black/5 text-black border border-gray-300 px-3 rounded-sm;
+  }

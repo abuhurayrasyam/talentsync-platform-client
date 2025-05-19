@@ -1,14 +1,56 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
+import { AuthContext } from '../context/Auth/AuthContext';
+import Swal from 'sweetalert2';
 
 const Register = () => {
+
+    const {signUpUser} = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
     const handleRegister = (e) => {
         e.preventDefault();
+
+        const form = e.target;
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name, photo, email, password);
+
+        signUpUser(email, password)
+        .then(() => {
+            // data transfer to db
+            const userProfile = {
+                name,
+                photo,
+                email
+            }
+
+            fetch('http://localhost:3000/users', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(userProfile)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    Swal.fire({
+                        title: "Your account has been created successfully!",
+                        icon: "success",
+                        draggable: true
+                    });
+                }
+            })
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
     return (
@@ -20,7 +62,7 @@ const Register = () => {
                     <label className="label">Your Name</label>
                     <input type="text" className="input" name='name' placeholder="Enter your name" required />
                     <label className="label">Photo URL</label>
-                    <input type="text" className="input" name='photoUrl' placeholder="Enter your photo url" required />
+                    <input type="text" className="input" name='photo' placeholder="Enter your photo url" required />
                     <label className="label">Email</label>
                     <input type="email" className="input" name='email' placeholder="Enter your email" required />
                     <label className="label">Password</label>
