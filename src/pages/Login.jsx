@@ -1,14 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
+import { AuthContext } from '../context/Auth/AuthContext';
+import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
+    const {logInUser} = useContext(AuthContext);
+
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleLogin = (e) => {
         e.preventDefault();
+
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logInUser(email, password)
+        .then(() => {
+            Swal.fire({
+                title: "Welcome! You’ve logged in successfully.",
+                icon: "success",
+                draggable: true
+            });
+            navigate(`${location.state ? location.state : "/"}`)
+        })
+        .then((error) => {
+            const errorCode = error.code;
+            if (errorCode === "auth/invalid-credential") {
+                toast.error("Incorrect email or password. Please try again.");
+            }
+        })
     }
 
     return (
