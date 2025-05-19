@@ -4,6 +4,7 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { Link } from 'react-router';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
@@ -19,7 +20,27 @@ const Register = () => {
         const photo = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photo, email, password);
+        
+        if (!/[a-z]/.test(password)) {
+            toast.error('Must include at least one lowercase letter.');
+            return;
+          }
+        if (!/[A-Z]/.test(password)) {
+            toast.error('Must include at least one uppercase letter.');
+            return;
+        }
+        if (!/\d/.test(password)) {
+            toast.error('Must include at least one number.');
+            return;
+        }
+        if (!/[!@#$%&*?]/.test(password)) {
+            toast.error('Must include at least one special character (!@#$%&*?).');
+            return;
+        }
+        if (password.length < 8) {
+            toast.error('Must be at least 8 characters long.');
+            return;
+        }
 
         signUpUser(email, password)
         .then(() => {
@@ -55,6 +76,9 @@ const Register = () => {
 
     return (
          <div className="hero bg-base-100 my-10">
+
+            <ToastContainer></ToastContainer>
+            
             <div className="card bg-base-100 w-full border border-gray-300 max-w-sm shrink-0 shadow-sm pb-3">
                 <div className="card-body">
                     <h1 className="font-semibold text-center text-xl">Create an account</h1>
