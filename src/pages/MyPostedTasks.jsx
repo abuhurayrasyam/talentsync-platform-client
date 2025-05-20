@@ -6,6 +6,8 @@ import { Link, useLoaderData } from 'react-router';
 import { FaHeart, FaRegEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const MyPostedTasks = () => {
 
@@ -93,7 +95,29 @@ const MyPostedTasks = () => {
                                         <th className='flex gap-2 items-center'>
                                             <Link to={`/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
                                             <button onClick={() => handleDeleteTask(taskData?._id)} title="Delete"><MdDeleteForever size={26} className="text-red-500 hover:text-red-700 text-lg md:text-xl cursor-pointer" /></button>
-                                            <Link to={''} title="Favorite"><FaHeart size={24} className="text-pink-500 hover:text-pink-700 text-lg md:text-xl" /></Link>
+
+                                            <span 
+                                                data-tooltip-id={`bids-tooltip-${taskData._id}`}
+                                                data-tooltip-content={`Total bids: ${taskData.bidsCount || 0}`}
+                                                data-tooltip-place="top"
+                                                data-tooltip-event="click"
+                                                data-tooltip-event-off="click"
+                                                className="cursor-pointer"> 
+                                            <FaHeart size={24} className="text-pink-500 hover:text-pink-700" />
+                                            </span>
+                                            <Tooltip 
+                                                id={`bids-tooltip-${taskData._id}`} 
+                                                clickable
+                                                style={{ 
+                                                    backgroundColor: '#1f2937',
+                                                    color: '#f9fafb',
+                                                    fontSize: '14px',
+                                                    padding: '8px 12px',
+                                                    borderRadius: '8px',
+                                                }}
+                                                openOnClick={true}
+                                                closeOnOutsideClick={true} 
+                                            />
                                         </th>
                                     </tr>
                                 )

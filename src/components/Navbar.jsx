@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
 
@@ -71,12 +73,36 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-2 items-center">
                     {
-                        user && 
-                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user?.displayName}>
-                            <div className="w-10 rounded-full">
-                                <img alt={user?.displayName} src={user?.photoURL} />
-                            </div>
-                        </div>
+                        user && (
+                        <>
+                            <span 
+                                data-tooltip-id={`bids-tooltip-${user}`}
+                                data-tooltip-content={`Name: ${user?.displayName} \n Email: ${user?.email}`}
+                                data-tooltip-place="bottom"
+                                data-tooltip-event="click"
+                                data-tooltip-event-off="click"
+                                className="cursor-pointer"> 
+                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user?.photoURL} />
+                                    </div>
+                                </div>
+                            </span>
+                            <Tooltip 
+                                id={`bids-tooltip-${user}`} 
+                                clickable
+                                style={{ 
+                                    whiteSpace: 'pre-line',
+                                    backgroundColor: '#1f2937',
+                                    color: '#f9fafb',
+                                    fontSize: '14px',
+                                    padding: '8px 12px',
+                                    borderRadius: '8px',
+                                }}
+                                openOnClick={true}
+                                closeOnOutsideClick={true} 
+                            />
+                        </>)
                     }
                     {
                         user ? (

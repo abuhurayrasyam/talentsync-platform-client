@@ -27,6 +27,7 @@ const AddTask = () => {
         };
 
         newTask.deadline = formatDate(deadline);
+        newTask.bidsCount = 0;
 
         fetch('https://talentsync-platform.vercel.app/tasks', {
             method: 'POST',
