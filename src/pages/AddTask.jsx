@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import { AuthContext } from '../context/Auth/AuthContext';
 
 const AddTask = () => {
+
+    const {user} = useContext(AuthContext);
+
     const [deadline, setDeadline] = useState(null);
 
     const handleAddTask = (e) => {
@@ -69,9 +73,9 @@ const AddTask = () => {
                                 <label className="label">Task Budget</label>
                                 <input type="text" className="input" name='budget' placeholder="Enter a budget" required />
                                 <label className="label">User Name</label>
-                                <input type="text" className="input" name='name' required />
+                                <input type="text" className="input" name='name' value={user?.displayName} readOnly required />
                                 <label className="label">User Email</label>
-                                <input type="email" className="input" name='email' required />
+                                <input type="email" className="input" name='email' value={user?.email} readOnly required />
                                 <input type="submit" className="btn btn-neutral mt-4" value="Add Task" />
                             </form>
                         </div>

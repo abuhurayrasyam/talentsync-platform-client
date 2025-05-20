@@ -8,7 +8,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const {signUpUser} = useContext(AuthContext);
+    const {signUpUser, updateUserProfile} = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -44,29 +44,35 @@ const Register = () => {
 
         signUpUser(email, password)
         .then(() => {
-            // data transfer to db
-            const userProfile = {
-                name,
-                photo,
-                email
-            }
-
-            fetch('http://localhost:3000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify(userProfile)
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.insertedId){
-                    Swal.fire({
-                        title: "Your account has been created successfully!",
-                        icon: "success",
-                        draggable: true
-                    });
+            updateUserProfile({displayName: name, photoURL: photo})
+            .then(() => {
+                // data transfer to db
+                const userProfile = {
+                    name,
+                    photo,
+                    email
                 }
+
+                fetch('http://localhost:3000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(userProfile)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.insertedId){
+                        Swal.fire({
+                            title: "Your account has been created successfully!",
+                            icon: "success",
+                            draggable: true
+                        });
+                    }
+                })
+            })
+            .catch((error) => {
+                console.log(error)
             })
         })
         .catch((error) => {

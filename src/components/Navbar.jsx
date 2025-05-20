@@ -66,6 +66,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-2 items-center">
                     {
+                        user && 
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user?.displayName}>
+                            <div className="w-10 rounded-full">
+                                <img alt={user?.displayName} src={user?.photoURL} />
+                            </div>
+                        </div>
+                    }
+                    {
                         user ? (
                             <button onClick={handleLogoutUser} className='btn'>Logout</button>
                         ) : (
