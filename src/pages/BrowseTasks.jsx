@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const BrowseTasks = () => {
 
@@ -41,7 +41,7 @@ const BrowseTasks = () => {
                                         <td>${taskData?.budget}</td>
                                         <td>{taskData?.deadline}</td>
                                         <th>
-                                            <button className="bg-neutral text-white rounded px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm hover:bg-neutral-700 cursor-pointer">See Details</button>
+                                            <Link to={`/task-details/${taskData?._id}`}><button className="bg-neutral text-white rounded px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm hover:bg-neutral-700 cursor-pointer">See Details</button></Link>
                                         </th>
                                     </tr>
                                 )

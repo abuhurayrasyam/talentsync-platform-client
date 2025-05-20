@@ -53,6 +53,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/task-details/:id",
+    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    hydrateFallbackElement: <Loading></Loading>,
     Component: TaskDetails
   },
   {
