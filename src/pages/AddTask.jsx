@@ -19,7 +19,14 @@ const AddTask = () => {
         const formData = new FormData(form);
         const newTask = Object.fromEntries(formData.entries());
 
-        newTask.deadline = deadline?.toISOString().split("T")[0];
+        const formatDate = (date) => {
+            const year = date.getFullYear();
+            const month = `${date.getMonth() + 1}`.padStart(2, '0');
+            const day = `${date.getDate()}`.padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        };
+
+        newTask.deadline = formatDate(deadline);
 
         fetch('https://talentsync-platform.vercel.app/tasks', {
             method: 'POST',
