@@ -12,6 +12,7 @@ import BrowseTasks from "../pages/BrowseTasks";
 import TaskDetails from "../pages/TaskDetails";
 import MyPostedTasks from "../pages/MyPostedTasks";
 import UpdateTask from "../pages/UpdateTask";
+import Loading from "../components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/browse-tasks",
+    loader: () => fetch('http://localhost:3000/tasks'),
+    hydrateFallbackElement: <Loading></Loading>,
     Component: BrowseTasks
   },
   {
