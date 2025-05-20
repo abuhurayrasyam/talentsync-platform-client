@@ -42,9 +42,11 @@ const MyPostedTasks = () => {
                 .then(data => {
                     if(data.deletedCount){
                         Swal.fire({
+                            icon: "success",
                             title: "Deleted!",
                             text: "Task has been deleted.",
-                            icon: "success"
+                            showConfirmButton: false,
+                            timer: 1500
                         });
 
                         const remainingTasks = myTasks.filter(user => user._id !== id);

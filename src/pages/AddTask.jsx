@@ -39,9 +39,10 @@ const AddTask = () => {
         .then(data => {
             if(data.insertedId){
                 Swal.fire({
-                    title: "Your task added successfully!",
                     icon: "success",
-                    draggable: true
+                    title: "Your task added successfully!",
+                    showConfirmButton: false,
+                    timer: 1500
                 });
             }
         })

@@ -4,11 +4,10 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
-import { toast } from 'react-toastify';
 
 const Login = () => {
 
-    const {logInUser} = useContext(AuthContext);
+    const {logInUser, signInViaGoogle} = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -24,19 +23,45 @@ const Login = () => {
 
         logInUser(email, password)
         .then(() => {
-            Swal.fire({
-                title: "Welcome! You’ve logged in successfully.",
-                icon: "success",
-                draggable: true
-            });
             navigate(`${location.state ? location.state : "/"}`)
+            Swal.fire({
+                icon: "success",
+                title: "Welcome! You’ve logged in successfully.",
+                showConfirmButton: false,
+                timer: 1500
+            });
         })
-        .then((error) => {
+        .catch((error) => {
             const errorCode = error.code;
             if (errorCode === "auth/invalid-credential") {
-                toast.error("Incorrect email or password. Please try again.");
+                Swal.fire({
+                    title: "Incorrect email or password. Please try again.",
+                    icon: "error",
+                    draggable: true
+                });
             }
         })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInViaGoogle()
+        .then(() => {
+            navigate(`${location.state ? location.state : "/"}`)
+            Swal.fire({
+                icon: "success",
+                title: "You have signed in with Google successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+            
+        })
+        .catch(() => {
+            Swal.fire({
+                title: "Google sign-in failed. Please try again or use another account!",
+                icon: "error",
+                draggable: true
+            });
+        });
     }
 
     return (
@@ -65,7 +90,7 @@ const Login = () => {
                         <h4 className="text-gray-600 text-sm">Or</h4>
                         <div className="flex-1 border-t border-gray-400"></div>
                     </div>
-                    <button className="btn btn-outline mt-1">
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline mt-1">
                     <FcGoogle className="text-xl" />
                     Continue with Google
                     </button>

@@ -11,13 +11,18 @@ const Navbar = () => {
         logoutUser()
         .then(() => {
             Swal.fire({
-                title: "Logout successfully!",
                 icon: "success",
-                draggable: true
+                title: "Logout successful!",
+                showConfirmButton: false,
+                timer: 1500
             });
         })
-        .catch((error) => {
-            console.log(error)
+        .catch(() => {
+            Swal.fire({
+                title: "Logout unsuccessful!",
+                icon: "error",
+                draggable: true
+            });
         })
     }
 

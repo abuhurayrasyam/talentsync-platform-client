@@ -13,6 +13,7 @@ import TaskDetails from "../pages/TaskDetails";
 import MyPostedTasks from "../pages/MyPostedTasks";
 import UpdateTask from "../pages/UpdateTask";
 import Loading from "../components/Loading";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
   {
@@ -45,7 +46,9 @@ export const router = createBrowserRouter([
   },
   {
     path: "/add-task",
-    Component: AddTask
+    element: <PrivateRoute>
+      <AddTask></AddTask>
+    </PrivateRoute>
   },
   {
     path: "/browse-tasks",
@@ -57,18 +60,24 @@ export const router = createBrowserRouter([
     path: "/task-details/:id",
     loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
-    Component: TaskDetails
+    element: <PrivateRoute>
+      <TaskDetails></TaskDetails>
+    </PrivateRoute>
   },
   {
     path: "/my-posted-tasks",
     loader: () => fetch('https://talentsync-platform.vercel.app/tasks/'),
     hydrateFallbackElement: <Loading></Loading>,
-    Component: MyPostedTasks
+    element: <PrivateRoute>
+      <MyPostedTasks></MyPostedTasks>
+    </PrivateRoute>
   },
   {
     path: "/update-task/:id",
     loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
-    Component: UpdateTask
+    element: <PrivateRoute>
+      <UpdateTask></UpdateTask>
+    </PrivateRoute>
   }
 ]);

@@ -1,16 +1,19 @@
 import React, { useContext, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
-import { Link } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
-    const {signUpUser, updateUserProfile} = useContext(AuthContext);
+    const {signUpUser, updateUserProfile, signInViaGoogle} = useContext(AuthContext);
 
     const [showPassword, setShowPassword] = useState(false);
+
+    const location = useLocation();
+    const navigate = useNavigate();
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -46,7 +49,7 @@ const Register = () => {
         .then(() => {
             updateUserProfile({displayName: name, photoURL: photo})
             .then(() => {
-                // data transfer to db
+
                 const userProfile = {
                     name,
                     photo,
@@ -63,21 +66,56 @@ const Register = () => {
                 .then(res => res.json())
                 .then(data => {
                     if(data.insertedId){
+                        navigate(`${location.state ? location.state : "/"}`)
                         Swal.fire({
-                            title: "Your account has been created successfully!",
                             icon: "success",
-                            draggable: true
+                            title: "Your account has been created successfully!",
+                            showConfirmButton: false,
+                            timer: 1500
                         });
                     }
                 })
             })
-            .catch((error) => {
-                console.log(error)
+            .catch(() => {
+                Swal.fire({
+                    title: "Failed to create account. Please try again!",
+                    icon: "error",
+                    draggable: true
+                });
             })
         })
         .catch((error) => {
-            console.log(error)
+            const errorCode = error.code;
+            let message = "Something went wrong. Please try again.";
+            if (errorCode === "auth/email-already-in-use") {
+            message = "This email is already registered!";
+            }
+            Swal.fire({
+            title: message,
+            icon: "error",
+            draggable: true
+            });
         })
+    }
+
+    const handleGoogleSignIn = () => {
+        signInViaGoogle()
+        .then(() => {
+            navigate(`${location.state ? location.state : "/"}`)
+            Swal.fire({
+                icon: "success",
+                title: "You have signed in with Google successfully!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        })
+        .catch(() => {
+            Swal.fire({
+                title: "Google sign-in failed. Please try again or use another account!",
+                icon: "error",
+                draggable: true
+            });
+        });
     }
 
     return (
@@ -116,7 +154,7 @@ const Register = () => {
                         <h4 className="text-gray-600 text-sm">Or</h4>
                         <div className="flex-1 border-t border-gray-400"></div>
                     </div>
-                    <button className="btn btn-outline mt-1">
+                    <button onClick={handleGoogleSignIn} className="btn btn-outline mt-1">
                     <FcGoogle className="text-xl" />
                     Continue with Google
                     </button>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const UpcomingTaskCard = ({upcomingTaskData}) => {
 
@@ -20,7 +21,7 @@ const UpcomingTaskCard = ({upcomingTaskData}) => {
                         <p><span className="font-medium">Posted by:</span> {name}</p>
                         <p><span className="font-medium">Email:</span> {email}</p>
                     </div>
-                    <button className='btn w-full'>See Details</button>
+                    <Link to={`/task-details/${_id}`}><button className='btn w-full'>See Details</button></Link>
                 </div>
             </div>
         </div>
