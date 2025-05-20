@@ -55,7 +55,7 @@ const MyPostedTasks = () => {
                                         <td>${taskData?.budget}</td>
                                         <td>{taskData?.deadline}</td>
                                         <th className='flex gap-2 items-center'>
-                                            <Link to={``} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
+                                            <Link to={`/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
                                             <Link to={``} title="Delete"><MdDeleteForever size={26} className="text-red-500 hover:text-red-700 text-lg md:text-xl" /></Link>
                                             <button onClick={''} title="Favorite"><FaHeart size={24} className="text-pink-500 hover:text-pink-700 text-lg md:text-xl cursor-pointer" /></button>
                                         </th>
