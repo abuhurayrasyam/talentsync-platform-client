@@ -59,6 +59,8 @@ export const router = createBrowserRouter([
   },
   {
     path: "/my-posted-tasks",
+    loader: () => fetch('http://localhost:3000/tasks/'),
+    hydrateFallbackElement: <Loading></Loading>,
     Component: MyPostedTasks
   },
   {
