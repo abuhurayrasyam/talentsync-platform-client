@@ -16,7 +16,7 @@ const MyPostedTasks = () => {
 
     useEffect(() => {
     if (user?.email) {
-        fetch(`http://localhost:3000/tasks?email=${user.email}`)
+        fetch(`https://talentsync-platform.vercel.app/tasks?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             setMyTasks(data);
@@ -35,7 +35,7 @@ const MyPostedTasks = () => {
             confirmButtonText: "Yes, delete it!"
             }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/tasks/${id}`, {
+                fetch(`https://talentsync-platform.vercel.app/tasks/${id}`, {
                     method: 'DELETE'
                 })
                 .then(res => res.json())

@@ -53,7 +53,7 @@ const Register = () => {
                     email
                 }
 
-                fetch('http://localhost:3000/users', {
+                fetch('https://talentsync-platform.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

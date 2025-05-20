@@ -23,6 +23,8 @@ export const router = createBrowserRouter([
         {
             index: true,
             path: "/",
+            loader: () => fetch('https://talentsync-platform.vercel.app/tasks/upcoming'),
+            hydrateFallbackElement: <Loading></Loading>,
             Component: Home
         }
     ]
@@ -47,25 +49,25 @@ export const router = createBrowserRouter([
   },
   {
     path: "/browse-tasks",
-    loader: () => fetch('http://localhost:3000/tasks'),
+    loader: () => fetch('https://talentsync-platform.vercel.app/tasks'),
     hydrateFallbackElement: <Loading></Loading>,
     Component: BrowseTasks
   },
   {
     path: "/task-details/:id",
-    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
     Component: TaskDetails
   },
   {
     path: "/my-posted-tasks",
-    loader: () => fetch('http://localhost:3000/tasks/'),
+    loader: () => fetch('https://talentsync-platform.vercel.app/tasks/'),
     hydrateFallbackElement: <Loading></Loading>,
     Component: MyPostedTasks
   },
   {
     path: "/update-task/:id",
-    loader: ({params}) => fetch(`http://localhost:3000/tasks/${params.id}`),
+    loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
     hydrateFallbackElement: <Loading></Loading>,
     Component: UpdateTask
   }

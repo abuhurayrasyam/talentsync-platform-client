@@ -21,7 +21,7 @@ const AddTask = () => {
 
         newTask.deadline = deadline?.toISOString().split("T")[0];
 
-        fetch('http://localhost:3000/tasks', {
+        fetch('https://talentsync-platform.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
