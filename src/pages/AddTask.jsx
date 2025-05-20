@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../context/Auth/AuthContext';
+import Swal from 'sweetalert2';
 
 const AddTask = () => {
 
@@ -13,6 +14,30 @@ const AddTask = () => {
 
     const handleAddTask = (e) => {
         e.preventDefault();
+
+        const form = e.target;
+        const formData = new FormData(form);
+        const newTask = Object.fromEntries(formData.entries());
+
+        newTask.deadline = deadline?.toISOString().split("T")[0];
+
+        fetch('http://localhost:3000/tasks', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newTask)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.insertedId){
+                Swal.fire({
+                    title: "Your task added successfully!",
+                    icon: "success",
+                    draggable: true
+                });
+            }
+        })
     }
 
     const categories = [
@@ -52,7 +77,7 @@ const AddTask = () => {
                                 <label className="label">Task Title</label>
                                 <input type="text" className="input" name='title' placeholder="Enter a task title" required />
                                 <label className="label">Task Category</label>
-                                <select className="input" required>
+                                <select className="input" name="category" required>
                                     <option value="">Select a Category</option>
                                     {
                                         categories.map((category, index) => (<option key={index} value={category}>{category}</option>))
@@ -68,10 +93,11 @@ const AddTask = () => {
                                     dateFormat="yyyy-MM-dd"
                                     placeholderText="Select a Deadline"
                                     className="input"
+                                    minDate={new Date()}
                                     required
                                 />
                                 <label className="label">Task Budget</label>
-                                <input type="text" className="input" name='budget' placeholder="Enter a budget" required />
+                                <input type="number" className="input" name='budget' placeholder="Enter a budget" required />
                                 <label className="label">User Name</label>
                                 <input type="text" className="input" name='name' value={user?.displayName} readOnly required />
                                 <label className="label">User Email</label>
