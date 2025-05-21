@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useLoaderData } from 'react-router';
@@ -44,6 +44,10 @@ const UpdateTask = () => {
         })
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const categories = [
         "Web Development",
         "Mobile Development",
@@ -74,9 +78,9 @@ const UpdateTask = () => {
             </header>
             <main>
                 <div className="hero bg-base-100 my-10">
-                    <div className="card bg-base-100 w-full border border-gray-300 max-w-sm shrink-0 shadow-sm pb-3">
+                    <div className="card bg-base-100 w-full border border-[#B6B09F] max-w-sm shrink-0 shadow-sm pb-3">
                         <div className="card-body">
-                            <h1 className="font-semibold text-center text-xl">Update a Task</h1>
+                            <h1 className="text-[#B6B09F] font-semibold text-center text-2xl">Update a Task</h1>
                             <form onSubmit={handleUpdateTask} className="fieldset">
                                 <label className="label">Task Title</label>
                                 <input type="text" className="input" name='title' defaultValue={title} placeholder="Enter a task title" required />
@@ -105,7 +109,7 @@ const UpdateTask = () => {
                                 <input type="text" className="input" name='name' value={user?.displayName} readOnly required />
                                 <label className="label">User Email</label>
                                 <input type="email" className="input" name='email' value={user?.email} readOnly required />
-                                <input type="submit" className="btn btn-neutral mt-4" value="Update Task" />
+                                <input type="submit" className="btn bg-[#B6B09F] text-gray-700 hover:bg-[#EAE4D5] mt-4" value="Update Task" />
                             </form>
                         </div>
                     </div>

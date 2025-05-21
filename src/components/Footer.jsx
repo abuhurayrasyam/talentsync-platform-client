@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#B6B09F] border border-[#EAE4D5] shadow-xl text-base-content">
+    <footer className="bg-[#B6B09F] border-t border-[#EAE4D5] shadow-xl text-base-content">
         <div className="footer sm:footer-horizontal w-11/12 mx-auto p-5 lg:justify-around text-gray-900 my-5">
             <nav>
                 <h6 className="footer-title">Contact</h6>
@@ -42,7 +42,7 @@ const Footer = () => {
                 </div>
             </nav>
         </div>
-        <div className="bg-[#EAE4D5] py-4">
+        <div className="bg-[#EAE4D5] border-b-5 border-[#B6B09F] py-4">
             <p className="text-center w-11/12 mx-auto md:text-sm text-[12px] text-gray-800">Copyright © {new Date().getFullYear()} - All right reserved by Talentsync Platform</p>
         </div>
     </footer>

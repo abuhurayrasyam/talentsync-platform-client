@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { Link, useLocation, useNavigate } from 'react-router';
@@ -118,6 +118,10 @@ const Register = () => {
         });
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
          <div className="hero bg-base-100 my-10">
 
@@ -146,7 +150,7 @@ const Register = () => {
                         <input type="checkbox" defaultChecked className="checkbox h-5 w-5" />
                         <a className="link link-hover">Accept Term & Conditions</a>
                     </div>
-                    <input type="submit" className="btn btn-neutral mt-4" value="Register" />
+                    <input type="submit" className="btn btn-neutral border-dotted shadow-none border-gray-50 mt-4" value="Register" />
                     </form>
                     <h4 className="text-gray-500 text-center">Already Have an Account ? <Link to={'/auth/login'} className="text-red-600">Login</Link></h4>
                     <div className="flex items-center gap-2">

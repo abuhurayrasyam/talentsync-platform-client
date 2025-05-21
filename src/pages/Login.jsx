@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
@@ -64,6 +64,10 @@ const Login = () => {
         });
     }
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="hero bg-base-100 my-10">
             <div className="card bg-base-100 border border-gray-300 w-full max-w-sm shrink-0 shadow-sm pb-3">
@@ -82,7 +86,7 @@ const Login = () => {
                         </button>
                     </div>
                     <div> Forgot password?</div>
-                    <input type="submit" className="btn btn-neutral mt-4" value="Login" />
+                    <input type="submit" className="btn btn-neutral border-dotted shadow-none border-gray-50 mt-4" value="Login" />
                     </form>
                     <h4 className="text-gray-500 text-center">Don't Have An Account ? <Link to={'/auth/signup'} className="text-red-600">SignUp</Link></h4>
                     <div className="flex items-center gap-2">

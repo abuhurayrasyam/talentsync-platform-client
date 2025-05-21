@@ -32,10 +32,10 @@ const Navbar = () => {
 
     const navLinks = (
         <>
-        <NavLink to={"/"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Home</NavLink>
-        <NavLink to={"/add-task"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Add Task</NavLink>
-        <NavLink to={"/browse-tasks"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Browse Tasks</NavLink>
-        <NavLink to={"/my-posted-tasks"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">My Posted Tasks</NavLink>
+        <NavLink to={"/"} className={({ isActive }) => `btn m-2 cursor-pointer bg-[#B6B09F] hover:bg-[#EAE4D5] active:bg-[#EAE4D5] text-black ${isActive ? "border border-gray-200 shadow-sm" : "border-none shadow-none"}`}>Home</NavLink>
+        <NavLink to="/add-task" className={({ isActive }) => `btn m-2 cursor-pointer bg-[#B6B09F] hover:bg-[#EAE4D5] active:bg-[#EAE4D5] text-black ${isActive ? "border border-gray-200 shadow-sm" : "border-none shadow-none"}`}>Add Task</NavLink>
+        <NavLink to={"/browse-tasks"} className={({ isActive }) => `btn m-2 cursor-pointer bg-[#B6B09F] hover:bg-[#EAE4D5] active:bg-[#EAE4D5] text-black ${isActive ? "border border-gray-200 shadow-sm" : "border-none shadow-none"}`}>Browse Tasks</NavLink>
+        <NavLink to={"/my-posted-tasks"} className={({ isActive }) => `btn m-2 cursor-pointer bg-[#B6B09F] hover:bg-[#EAE4D5] active:bg-[#EAE4D5] text-black ${isActive ? "border border-gray-200 shadow-sm" : "border-none shadow-none"}`}>My Posted Tasks</NavLink>
         </>
     );
 
@@ -69,7 +69,7 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-[#B6B09F] shadow-sm">
+        <div className="bg-[#B6B09F] border-b border-[#EAE4D5] shadow-sm">
             <div className="navbar w-11/12 mx-auto">
                 <div className="navbar-start">
                 <div className="dropdown">
@@ -92,7 +92,7 @@ const Navbar = () => {
                     </div>
                     <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-[#EAE4D5] rounded-box z-1 mt-3 w-52 p-2 shadow"
+                    className="menu menu-sm dropdown-content bg-[#B6B09F] rounded-box z-1 mt-3 w-52 p-2 shadow"
                     >
                     {navLinks}
                     </ul>
@@ -147,11 +147,11 @@ const Navbar = () => {
                     </button>
                     {
                         user ? (
-                            <button onClick={handleLogoutUser} className='bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4'>Logout</button>
+                            <button onClick={handleLogoutUser} className='bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4 cursor-pointer'>Logout</button>
                         ) : (
                             <>
-                            <Link to={'/auth/login'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4">Login</Link>
-                            <Link to={'/auth/signup'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4"><button>SignUp</button></Link>
+                            <Link to={'/auth/login'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4 cursor-pointer">Login</Link>
+                            <Link to={'/auth/signup'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4 cursor-pointer"><button>SignUp</button></Link>
                             </>
                         )
                     }

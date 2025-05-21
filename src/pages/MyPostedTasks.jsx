@@ -24,6 +24,7 @@ const MyPostedTasks = () => {
             setMyTasks(data);
         });
     }
+    window.scrollTo(0, 0);
     }, [user?.email])
 
     const handleDeleteTask = (id) => {

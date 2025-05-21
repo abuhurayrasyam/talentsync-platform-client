@@ -6,8 +6,7 @@ const UpcomingTaskCard = ({upcomingTaskData}) => {
     const {_id, title, category, budget, deadline, name, email} = upcomingTaskData;
 
     return (
-        <div className="max-w-md mx-auto p-4">
-            <div className="bg-white border border-gray-300 p-6 rounded-xl shadow-sm w-[380px]">
+        <div className="w-11/12 mx-auto bg-[#EAE4D5] rounded-2xl shadow-sm border border-[#B6B09F] transition-transform hover:scale-[1.02] duration-200">
                 <div className="p-6 space-y-4">
                     <h2 className="text-xl font-bold text-gray-800">{title}</h2>
                     <p className="text-sm text-gray-500">{category}</p>
@@ -21,9 +20,8 @@ const UpcomingTaskCard = ({upcomingTaskData}) => {
                         <p><span className="font-medium">Posted by:</span> {name}</p>
                         <p><span className="font-medium">Email:</span> {email}</p>
                     </div>
-                    <Link to={`/task-details/${_id}`}><button className='btn w-full'>See Details</button></Link>
+                    <Link to={`/task-details/${_id}`}><button className='btn w-full bg-[#B6B09F] hover:bg-[#EAE4D5] rounded-md border border-[#EAE4D5] hover:border-[#B6B09F] text-gray-100 hover:text-gray-800 shadow-none'>See Details</button></Link>
                 </div>
-            </div>
         </div>
     );
 };
