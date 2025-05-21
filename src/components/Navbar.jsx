@@ -4,8 +4,8 @@ import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
-import { CiSun } from 'react-icons/ci';
 import { IoMoonSharp } from 'react-icons/io5';
+import { FaSun } from 'react-icons/fa';
 
 const Navbar = () => {
 
@@ -32,10 +32,10 @@ const Navbar = () => {
 
     const navLinks = (
         <>
-        <NavLink to={"/"} className="btn btn-ghost m-2 cursor-pointer">Home</NavLink>
-        <NavLink to={"/add-task"} className="btn btn-ghost m-2 cursor-pointer">Add Task</NavLink>
-        <NavLink to={"/browse-tasks"} className="btn btn-ghost m-2 cursor-pointer">Browse Tasks</NavLink>
-        <NavLink to={"/my-posted-tasks"} className="btn btn-ghost m-2 cursor-pointer">My Posted Tasks</NavLink>
+        <NavLink to={"/"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Home</NavLink>
+        <NavLink to={"/add-task"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Add Task</NavLink>
+        <NavLink to={"/browse-tasks"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">Browse Tasks</NavLink>
+        <NavLink to={"/my-posted-tasks"} className="btn btn-ghost hover:bg-[#EAE4D5] m-2 cursor-pointer text-black">My Posted Tasks</NavLink>
         </>
     );
 
@@ -69,14 +69,14 @@ const Navbar = () => {
     };
 
     return (
-        <div className="bg-base-100 shadow-sm">
+        <div className="bg-[#B6B09F] shadow-sm">
             <div className="navbar w-11/12 mx-auto">
                 <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                    <div tabIndex={0} role="button" className="text-[#EAE4D5] p-3 lg:hidden">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5"
+                        className="h-8 w-8"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -92,27 +92,17 @@ const Navbar = () => {
                     </div>
                     <ul
                     tabIndex={0}
-                    className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                    className="menu menu-sm dropdown-content bg-[#EAE4D5] rounded-box z-1 mt-3 w-52 p-2 shadow"
                     >
                     {navLinks}
                     </ul>
                 </div>
-                <a className="btn btn-ghost lg:text-xl md:text-md text-sm">Talentsync Platform</a>
+                <a className="text-black font-semibold lg:text-xl md:text-md text-sm">Talentsync <span className='text-white'>Platform</span></a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">{navLinks}</ul>
                 </div>
-                <div className="navbar-end space-x-2 items-center">
-                    <button className="btn btn-square">
-                        <label className="swap swap-rotate w-10 h-10">
-                            <input type="checkbox" onChange={handleToggle} checked={theme === "dark"} />
-                            { theme === "dark" ? (
-                                <IoMoonSharp className="text-blue-600 text-2xl" />
-                            ) : (
-                                <CiSun className="text-yellow-400 text-2xl" />
-                            )}
-                        </label>
-                    </button>
+                <div className="navbar-end space-x-1.5 items-center">
                     {
                         user && (
                         <>
@@ -124,7 +114,7 @@ const Navbar = () => {
                                 data-tooltip-event-off="click"
                                 className="cursor-pointer"> 
                                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
+                                    <div className="w-8 md:w-12 rounded-full">
                                         <img src={user?.photoURL} />
                                     </div>
                                 </div>
@@ -145,13 +135,23 @@ const Navbar = () => {
                             />
                         </>)
                     }
+                    <button className="bg-[#EAE4D5] rounded-sm h-8 md:h-full flex items-center justify-center">
+                        <label className="swap swap-rotate w-10 h-10 flex items-center justify-center">
+                            <input type="checkbox" onChange={handleToggle} checked={theme === "dark"} />
+                            { theme === "dark" ? (
+                                <IoMoonSharp className="text-yellow-500 text-2xl" />
+                            ) : (
+                                <FaSun className="text-yellow-500 text-2xl" />
+                            )}
+                        </label>
+                    </button>
                     {
                         user ? (
-                            <button onClick={handleLogoutUser} className='btn'>Logout</button>
+                            <button onClick={handleLogoutUser} className='bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4'>Logout</button>
                         ) : (
                             <>
-                            <Link to={'/auth/login'} className="btn">Login</Link>
-                            <Link to={'/auth/signup'} className="btn">SignUp</Link>
+                            <Link to={'/auth/login'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4">Login</Link>
+                            <Link to={'/auth/signup'} className="bg-[#EAE4D5] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4"><button>SignUp</button></Link>
                             </>
                         )
                     }

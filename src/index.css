@@ -2,9 +2,9 @@
 @plugin "daisyui";
 
 a.active {
-  @apply bg-black/5 text-black border border-gray-300 px-3 rounded-sm;
+  @apply bg-black/5 border border-gray-300 px-3 rounded-sm;
 }
 
 .dark a.active {
-  @apply bg-white/10 text-white border border-gray-600;
+  @apply bg-white/10 border border-gray-600;
 }

@@ -41,7 +41,7 @@ const TaskDetails = () => {
 
     return (
         <div>
-        <header>
+        <header className='sticky top-0 z-50'>
             <Navbar />
         </header>
         <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
