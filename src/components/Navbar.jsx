@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import { CiSun } from 'react-icons/ci';
+import { IoMoonSharp } from 'react-icons/io5';
 
 const Navbar = () => {
 
@@ -36,6 +38,35 @@ const Navbar = () => {
         <NavLink to={"/my-posted-tasks"} className="btn btn-ghost m-2 cursor-pointer">My Posted Tasks</NavLink>
         </>
     );
+
+    const [theme, setTheme] = useState("light");
+
+    useEffect(() => {
+    const localTheme = localStorage.getItem("theme") || "light";
+    setTheme(localTheme);
+
+    if (localTheme === "dark") {
+        document.documentElement.classList.add("dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+    }
+
+    document.documentElement.setAttribute("data-theme", localTheme);
+    }, []);
+
+    const handleToggle = (e) => {
+    if (e.target.checked) {
+        document.documentElement.classList.add("dark");
+        setTheme("dark");
+        localStorage.setItem("theme", "dark");
+        document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+        document.documentElement.classList.remove("dark");
+        setTheme("light");
+        localStorage.setItem("theme", "light");
+        document.documentElement.setAttribute("data-theme", "light");
+    }
+    };
 
     return (
         <div className="bg-base-100 shadow-sm">
@@ -72,6 +103,16 @@ const Navbar = () => {
                 <ul className="menu menu-horizontal px-1">{navLinks}</ul>
                 </div>
                 <div className="navbar-end space-x-2 items-center">
+                    <button className="btn btn-square">
+                        <label className="swap swap-rotate w-10 h-10">
+                            <input type="checkbox" onChange={handleToggle} checked={theme === "dark"} />
+                            { theme === "dark" ? (
+                                <IoMoonSharp className="text-blue-600 text-2xl" />
+                            ) : (
+                                <CiSun className="text-yellow-400 text-2xl" />
+                            )}
+                        </label>
+                    </button>
                     {
                         user && (
                         <>
