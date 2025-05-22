@@ -33,3 +33,5 @@ Talentsync is a modern freelance task marketplace where users can post, browse, 
 ```bash
 npm install
 npm run dev
+
+🔐 Environment variables (e.g., Firebase config keys) are stored securely in a `.env.local` file. Do not commit this file to version control.
