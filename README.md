@@ -1,12 +1,35 @@
-# React + Vite
+# Talentsync Platform - Client
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Website:** [https://talentsync-platform.web.app/](https://talentsync-platform.web.app/)
 
-Currently, two official plugins are available:
+Talentsync is a modern freelance task marketplace where users can post, browse, and manage task listings while freelancers can find relevant work opportunities. This is the frontend built with React, Tailwind CSS, and Firebase Authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🚀 Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔒 **Protected Routes**: Secure pages like Add Task, My Posted Tasks, and Task Details with Firebase authentication.
+- 🎯 **Task Marketplace**: Post, browse, and manage tasks with category, budget, and deadline filters.
+- 📱 **Fully Responsive**: Mobile-first UI that works seamlessly on desktop, tablet, and smartphone screens.
+- 🎡 **Interactive UI**: Includes sliders, modals, toast notifications, and SweetAlert-based interactions.
+- 🌗 **Dark/Light Mode Toggle**: Easily switch between light and dark themes for better accessibility.
+- 🔍 **Dynamic Routing**: Smooth navigation using React Router v7, even on page reloads.
+
+---
+
+## 🛠️ Technologies Used
+
+- React 19
+- Firebase Authentication
+- Tailwind CSS & DaisyUI
+- React Router v7
+- SweetAlert2 & React Toastify
+- React Icons, React Datepicker, Swiper, React Tooltip
+
+---
+
+## 📦 Installation
+
+```bash
+npm install
+npm run dev

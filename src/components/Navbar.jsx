@@ -104,36 +104,12 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-1.5 items-center">
                     {
-                        user && (
-                        <>
-                            <span 
-                                data-tooltip-id={`bids-tooltip-${user}`}
-                                data-tooltip-content={`Name: ${user?.displayName} \n Email: ${user?.email}`}
-                                data-tooltip-place="bottom"
-                                data-tooltip-event="click"
-                                data-tooltip-event-off="click"
-                                className="cursor-pointer"> 
-                                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-8 md:w-12 rounded-full">
-                                        <img src={user?.photoURL} />
-                                    </div>
-                                </div>
-                            </span>
-                            <Tooltip 
-                                id={`bids-tooltip-${user}`} 
-                                clickable
-                                style={{ 
-                                    whiteSpace: 'pre-line',
-                                    backgroundColor: '#1f2937',
-                                    color: '#f9fafb',
-                                    fontSize: '14px',
-                                    padding: '8px 12px',
-                                    borderRadius: '8px',
-                                }}
-                                openOnClick={true}
-                                closeOnOutsideClick={true} 
-                            />
-                        </>)
+                         user && 
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar" title={user.displayName}>
+                            <div className="w-8 md:w-12 rounded-full">
+                                <img alt={user.displayName} src={user.photoURL} />
+                            </div>
+                        </div>
                     }
                     <button className="bg-[#EAE4D5] rounded-sm h-8 md:h-full flex items-center justify-center">
                         <label className="swap swap-rotate w-10 h-10 flex items-center justify-center">
