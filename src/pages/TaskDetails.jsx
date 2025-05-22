@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/Auth/AuthContext';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const TaskDetails = () => {
     const {user} = useContext(AuthContext);
@@ -43,15 +44,17 @@ const TaskDetails = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useDocumentTitle("Talentsync Platform | Task Details");
+
     return (
         <div>
         <header className='sticky top-0 z-50'>
             <Navbar />
         </header>
         <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
-            <div className="bg-[#B6B09F] border border-[#EAE4D5] text-white rounded-lg shadow-sm py-4 px-6 text-center text-xl font-semibold tracking-wide">YOU BID FOR <span>{bidsCount}</span> OPPORTUNITY{bidsCount !== 1 ? 'IES' : ''}
+            <div className="bg-[#B6B09F] border-3 border-dotted border-[#EAE4D5] text-white rounded-lg shadow-sm py-4 px-6 text-center text-xl font-semibold tracking-wide">YOU BID FOR <span>{bidsCount}</span> OPPORTUNITY{bidsCount !== 1 ? 'IES' : ''}
             </div>
-            <section className="bg-[#EAE4D5] border border-[#B6B09F] p-8 rounded-xl shadow-sm">
+            <section className="bg-[#EAE4D5] border-3 border-[#B6B09F] p-8 rounded-xl shadow-sm">
                 <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6">{title}</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-gray-700">
                     <div>

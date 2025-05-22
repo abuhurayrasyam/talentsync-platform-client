@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Error = () => {
+
+    useDocumentTitle("Talentsync Platform | Error");
+
     return (
         <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
             <h1 className="text-4xl font-bold text-red-600 mb-2">404 - Page Not Found</h1>

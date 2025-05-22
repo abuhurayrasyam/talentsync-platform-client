@@ -5,6 +5,7 @@ import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const AddTask = () => {
 
@@ -27,6 +28,7 @@ const AddTask = () => {
         };
 
         newTask.deadline = formatDate(deadline);
+        newTask.budget = Number(newTask.budget);
         newTask.bidsCount = 0;
 
         fetch('https://talentsync-platform.vercel.app/tasks', {
@@ -45,6 +47,8 @@ const AddTask = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
+                form.reset();
+                setDeadline(null);
             }
         })
     }
@@ -53,7 +57,10 @@ const AddTask = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useDocumentTitle("Talentsync Platform | Add Task");
+
     const categories = [
+        "Cyber Security",
         "Web Development",
         "Mobile Development",
         "UI/UX Design",

@@ -6,6 +6,7 @@ import { AuthContext } from '../context/Auth/AuthContext';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Swal from 'sweetalert2';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const UpdateTask = () => {
 
@@ -48,7 +49,10 @@ const UpdateTask = () => {
         window.scrollTo(0, 0);
     }, []);
 
+    useDocumentTitle("Talentsync Platform | Update Task");
+
     const categories = [
+        "Cyber Security",
         "Web Development",
         "Mobile Development",
         "UI/UX Design",

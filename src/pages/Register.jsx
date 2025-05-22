@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
 import { toast, ToastContainer } from 'react-toastify';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Register = () => {
 
@@ -121,6 +122,8 @@ const Register = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useDocumentTitle("Talentsync Platform | SignUp");
 
     return (
          <div className="hero bg-base-100 my-10">

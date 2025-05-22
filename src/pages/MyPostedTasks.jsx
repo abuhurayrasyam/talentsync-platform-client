@@ -8,6 +8,7 @@ import { MdDeleteForever } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const MyPostedTasks = () => {
 
@@ -60,6 +61,8 @@ const MyPostedTasks = () => {
         });
     }
 
+    useDocumentTitle("Talentsync Platform | My Posted Tasks");
+
     return (
         <div>
             <header className='sticky top-0 z-50'>
@@ -67,64 +70,74 @@ const MyPostedTasks = () => {
             </header>
             <main className='min-h-screen mt-10'>
                 <div className="w-11/12 mx-auto overflow-x-auto">
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Name & Email</th>
-                                <th>Task</th>
-                                <th>Category</th>
-                                <th>Budget</th>
-                                <th>Deadline</th>
-                                <th>Details</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                myTasks.map((taskData, index) => 
-                                    <tr key={taskData?._id}>
-                                        <td>{index + 1}</td>
-                                        <td>
-                                            <div className="font-bold">{taskData?.name}</div>
-                                            <div className="text-sm opacity-50">{taskData?.email}</div>
-                                        </td>
-                                        <td>{taskData?.title}</td>
-                                        <td>{taskData?.category}</td>
-                                        <td>${taskData?.budget}</td>
-                                        <td>{taskData?.deadline}</td>
-                                        <th className='flex gap-2 items-center'>
-                                            <Link to={`/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
-                                            <button onClick={() => handleDeleteTask(taskData?._id)} title="Delete"><MdDeleteForever size={26} className="text-red-500 hover:text-red-700 text-lg md:text-xl cursor-pointer" /></button>
-
-                                            <span 
-                                                data-tooltip-id={`bids-tooltip-${taskData._id}`}
-                                                data-tooltip-content={`Total bids: ${taskData.bidsCount || 0}`}
-                                                data-tooltip-place="top"
-                                                data-tooltip-event="click"
-                                                data-tooltip-event-off="click"
-                                                className="cursor-pointer"> 
-                                            <FaHeart size={24} className="text-pink-500 hover:text-pink-700" />
-                                            </span>
-                                            <Tooltip 
-                                                id={`bids-tooltip-${taskData._id}`} 
-                                                clickable
-                                                style={{ 
-                                                    backgroundColor: '#1f2937',
-                                                    color: '#f9fafb',
-                                                    fontSize: '14px',
-                                                    padding: '8px 12px',
-                                                    borderRadius: '8px',
-                                                }}
-                                                openOnClick={true}
-                                                closeOnOutsideClick={true} 
-                                            />
-                                        </th>
+                    {
+                        myTasks.length > 0 ? (
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name & Email</th>
+                                        <th>Task</th>
+                                        <th>Category</th>
+                                        <th>Budget</th>
+                                        <th>Deadline</th>
+                                        <th>Details</th>
+                                        <th></th>
                                     </tr>
-                                )
-                            }
-                        </tbody>
-                    </table>
+                                </thead>
+                                <tbody>
+                                    {
+                                        myTasks.map((taskData, index) => 
+                                            <tr key={taskData?._id}>
+                                                <td>{index + 1}</td>
+                                                <td>
+                                                    <div className="font-bold">{taskData?.name}</div>
+                                                    <div className="text-sm opacity-50">{taskData?.email}</div>
+                                                </td>
+                                                <td>{taskData?.title}</td>
+                                                <td>{taskData?.category}</td>
+                                                <td>${taskData?.budget}</td>
+                                                <td>{taskData?.deadline}</td>
+                                                <th className='flex gap-2 items-center'>
+                                                    <Link to={`/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
+                                                    <button onClick={() => handleDeleteTask(taskData?._id)} title="Delete"><MdDeleteForever size={26} className="text-red-500 hover:text-red-700 text-lg md:text-xl cursor-pointer" /></button>
+
+                                                    <span 
+                                                        data-tooltip-id={`bids-tooltip-${taskData._id}`}
+                                                        data-tooltip-content={`Total bids: ${taskData.bidsCount || 0}`}
+                                                        data-tooltip-place="top"
+                                                        data-tooltip-event="click"
+                                                        data-tooltip-event-off="click"
+                                                        className="cursor-pointer"> 
+                                                    <FaHeart size={24} className="text-pink-500 hover:text-pink-700" />
+                                                    </span>
+                                                    <Tooltip 
+                                                        id={`bids-tooltip-${taskData._id}`} 
+                                                        clickable
+                                                        style={{ 
+                                                            backgroundColor: '#1f2937',
+                                                            color: '#f9fafb',
+                                                            fontSize: '14px',
+                                                            padding: '8px 12px',
+                                                            borderRadius: '8px',
+                                                        }}
+                                                        openOnClick={true}
+                                                        closeOnOutsideClick={true} 
+                                                    />
+                                                </th>
+                                            </tr>
+                                        )
+                                    }
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div className="text-center py-10">
+                                <h2 className="text-2xl font-semibold text-natural">You haven't posted any tasks yet.</h2>
+                                <p className="text-[#B6B09F] mt-2">Start by creating a new task to see it listed here.</p>
+                                <Link to={'/add-task'}><button className='btn mt-5 bg-[#EAE4D5] hover:bg-[#B6B09F] border-1 border-dashed border-[#B6B09F] text-gray-700'>Add a Task</button></Link>
+                            </div>
+                        )
+                    }
                 </div>
             </main>
             <footer>

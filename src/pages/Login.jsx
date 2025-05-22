@@ -4,6 +4,7 @@ import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../context/Auth/AuthContext';
 import Swal from 'sweetalert2';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Login = () => {
 
@@ -67,6 +68,8 @@ const Login = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    useDocumentTitle("Talentsync Platform | Login");
 
     return (
         <div className="hero bg-base-100 my-10">

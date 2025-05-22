@@ -6,7 +6,7 @@ const UpcomingTaskCard = ({upcomingTaskData}) => {
     const {_id, title, category, budget, deadline, name, email} = upcomingTaskData;
 
     return (
-        <div className="w-11/12 mx-auto bg-[#EAE4D5] rounded-2xl shadow-sm border border-[#B6B09F] transition-transform hover:scale-[1.02] duration-200">
+        <div className="w-11/12 mx-auto bg-[#EAE4D5] rounded-2xl shadow-sm border-3 border-[#B6B09F] transition-transform hover:scale-[1.02] duration-200">
                 <div className="p-6 space-y-4">
                     <h2 className="text-xl font-bold text-gray-800">{title}</h2>
                     <p className="text-sm text-gray-500">{category}</p>

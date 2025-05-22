@@ -4,6 +4,7 @@ import Slider from '../components/Slider';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import UpcomingTasks from '../components/UpcomingTasks';
+import useDocumentTitle from '../hooks/useDocumentTitle';
 
 const Home = () => {
 
@@ -16,7 +17,9 @@ const Home = () => {
           .then(response => response.json())
           .then(data => setSlidesData(data))
       }, []);
-
+    
+    useDocumentTitle("Talentsync Platform | Home");
+    
     return (
         <div>
             <section className='w-11/12 mx-auto'>

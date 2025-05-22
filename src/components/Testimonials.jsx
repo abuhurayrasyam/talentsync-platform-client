@@ -21,7 +21,7 @@ const Testimonials = () => {
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-10">Trusted by Task Posters & Freelancers</h2>
       <div className="grid gap-8 md:grid-cols-2 w-11/12 mx-auto">
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="bg-[#EAE4D5] border border-[#B6B09F] p-6 rounded-xl shadow-sm">
+          <div key={index} className="bg-[#EAE4D5] border-3 border-dotted border-[#B6B09F] p-6 rounded-xl shadow-sm">
             <div className="flex items-center mb-4">
               <img src={testimonial.photo} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover mr-4" />
               <div>
