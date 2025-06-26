@@ -34,8 +34,8 @@ const ThemeToggle = () => {
     };
 
     return (
-        <button className="bg-[#EAE4D5] border border-[#B6B09F] rounded-sm h-8 md:h-full flex items-center justify-center">
-            <label className="swap swap-rotate w-10 h-10 flex items-center justify-center">
+        <button className="h-8 md:h-full flex items-center justify-center">
+            <label className="swap swap-rotate w-8 h-8 flex items-center justify-center">
                 <input type="checkbox" onChange={handleToggle} checked={theme === "dark"} />
                 { theme === "dark" ? (
                     <IoMoonSharp className="text-yellow-500 text-2xl" />

@@ -1,6 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from '../context/Auth/AuthContext';
@@ -87,9 +85,9 @@ const AddTask = () => {
         <div>
             <main>
                  <div className="hero bg-base-100 my-10">
-                    <div className="card bg-base-100 w-full border border-[#B6B09F] max-w-sm shrink-0 shadow-sm pb-3">
+                    <div className="card bg-base-100 w-full border border-primary max-w-sm shrink-0 shadow-sm pb-3">
                         <div className="card-body">
-                            <h1 className="text-[#B6B09F] font-semibold text-center text-2xl">Add a Task</h1>
+                            <h1 className="text-primary font-semibold text-center text-2xl">Add a Task</h1>
                             <form onSubmit={handleAddTask} className="fieldset">
                                 <label className="label">Task Title</label>
                                 <input type="text" className="input" name='title' placeholder="Enter a task title" required />
@@ -119,7 +117,7 @@ const AddTask = () => {
                                 <input type="text" className="input" name='name' value={user?.displayName} readOnly required />
                                 <label className="label">User Email</label>
                                 <input type="email" className="input" name='email' value={user?.email} readOnly required />
-                                <input type="submit" className="btn bg-[#B6B09F] text-gray-700 hover:bg-[#EAE4D5] mt-4" value="Add Task" />
+                                <input type="submit" className="btn bg-primary text-neutral hover:bg-secondary mt-4" value="Add Task" />
                             </form>
                         </div>
                     </div>

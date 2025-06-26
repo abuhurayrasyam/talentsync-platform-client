@@ -71,7 +71,8 @@ const MyPostedTasks = () => {
     
     return (
         <div>
-            <main className='min-h-screen mt-10'>
+            <main className='min-h-screen mt-5'>
+                <h1 className='text-2xl md:text-3xl lg:text-4xl font-bold mb-10 ml-10'>My Posted Tasks</h1>
                 <div className="w-11/12 mx-auto overflow-x-auto">
                     {
                         myTasks.length > 0 ? (
@@ -79,7 +80,6 @@ const MyPostedTasks = () => {
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Name & Email</th>
                                         <th>Task</th>
                                         <th>Category</th>
                                         <th>Budget</th>
@@ -93,16 +93,12 @@ const MyPostedTasks = () => {
                                         myTasks.map((taskData, index) => 
                                             <tr key={taskData?._id}>
                                                 <td>{index + 1}</td>
-                                                <td>
-                                                    <div className="font-bold">{taskData?.name}</div>
-                                                    <div className="text-sm opacity-50">{taskData?.email}</div>
-                                                </td>
                                                 <td>{taskData?.title}</td>
                                                 <td>{taskData?.category}</td>
                                                 <td>${taskData?.budget}</td>
                                                 <td>{taskData?.deadline}</td>
                                                 <th className='flex gap-2 items-center'>
-                                                    <Link to={`/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
+                                                    <Link to={`/dashboard/update-task/${taskData?._id}`} title="Edit"><FaRegEdit size={25} className="text-blue-500 hover:text-blue-700 text-lg md:text-xl" /></Link>
                                                     <button onClick={() => handleDeleteTask(taskData?._id)} title="Delete"><MdDeleteForever size={26} className="text-red-500 hover:text-red-700 text-lg md:text-xl cursor-pointer" /></button>
 
                                                     <span 
@@ -136,8 +132,8 @@ const MyPostedTasks = () => {
                         ) : (
                             <div className="text-center py-10">
                                 <h2 className="text-2xl font-semibold text-natural">You haven't posted any tasks yet.</h2>
-                                <p className="text-[#B6B09F] mt-2">Start by creating a new task to see it listed here.</p>
-                                <Link to={'/add-task'}><button className='btn mt-5 bg-[#EAE4D5] hover:bg-[#B6B09F] border-1 border-dashed border-[#B6B09F] text-gray-700'>Add a Task</button></Link>
+                                <p className="text-primary mt-2">Start by creating a new task to see it listed here.</p>
+                                <Link to={'/add-task'}><button className='btn mt-5 bg-secondary hover:bg-primary border-1 border-dashed border-primary text-gray-700'>Add a Task</button></Link>
                             </div>
                         )
                     }

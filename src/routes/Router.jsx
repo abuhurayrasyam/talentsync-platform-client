@@ -89,6 +89,14 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       },
       {
+        path: "update-task/:id",
+        loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
+        hydrateFallbackElement: <Loading></Loading>,
+        element: <PrivateRoute>
+          <UpdateTask></UpdateTask>
+        </PrivateRoute>
+      },
+      {
         path: "my-posted-tasks",
         element: <PrivateRoute>
           <MyPostedTasks></MyPostedTasks>
@@ -102,14 +110,6 @@ export const router = createBrowserRouter([
     hydrateFallbackElement: <Loading></Loading>,
     element: <PrivateRoute>
       <TaskDetails></TaskDetails>
-    </PrivateRoute>
-  },
-  {
-    path: "/update-task/:id",
-    loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
-    hydrateFallbackElement: <Loading></Loading>,
-    element: <PrivateRoute>
-      <UpdateTask></UpdateTask>
     </PrivateRoute>
   }
 ]);

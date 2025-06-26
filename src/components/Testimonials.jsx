@@ -17,16 +17,16 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <div className="w-11/12 mx-auto py-12">
+    <div className="pt-10 pb-6">
       <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-10">Trusted by Task Posters & Freelancers</h2>
       <div className="grid gap-8 md:grid-cols-2 w-11/12 mx-auto">
         {testimonials.map((testimonial, index) => (
-          <div key={index} className="bg-[#EAE4D5] border-3 border-dotted border-[#B6B09F] p-6 rounded-xl shadow-sm">
+          <div key={index} className="bg-secondary p-6 rounded-xl shadow-md">
             <div className="flex items-center mb-4">
               <img src={testimonial.photo} alt={testimonial.name} className="w-14 h-14 rounded-full object-cover mr-4" />
               <div>
                 <p className="font-semibold text-gray-800">{testimonial.name}</p>
-                <div className="text-yellow-500 text-sm">
+                <div className="text-accent text-sm">
                   {"★".repeat(testimonial.rating)}{"☆".repeat(5 - testimonial.rating)}
                 </div>
               </div>

@@ -6,7 +6,7 @@ import { Link } from "react-router";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#B6B09F] border-t border-[#EAE4D5] shadow-xl text-base-content">
+    <footer className="bg-primary shadow-xl text-base-content">
         <div className="footer sm:footer-horizontal w-11/12 mx-auto p-5 lg:justify-around text-gray-900 my-5">
             <nav>
                 <h6 className="footer-title">Contact</h6>
@@ -30,19 +30,19 @@ const Footer = () => {
             <nav>
                 <h6 className="footer-title">Social</h6>
                 <div className="grid grid-flow-col gap-4 items-center">
-                <Link to={'https://www.x.com'} target="_blank">
+                <Link to={'https://www.x.com/abuhurayrasyam'} target="_blank">
                     <FaXTwitter size={23} />
                 </Link>
-                <Link to={'https://www.instagram.com'} target="_blank">
+                <Link to={'https://www.instagram.com/abuhurayrasyam'} target="_blank">
                     <FaInstagram size={24} />
                 </Link>
-                <Link to={'https://www.facebook.com'} target="_blank">
+                <Link to={'https://www.facebook.com/abuhurayrasyamofficial'} target="_blank">
                 <FaFacebookF size={24} />
                 </Link>
                 </div>
             </nav>
         </div>
-        <div className="bg-[#EAE4D5] border-b-5 border-[#B6B09F] py-4">
+        <div className="bg-secondary border-b-5 border-primary py-4">
             <p className="text-center w-11/12 mx-auto md:text-sm text-[12px] text-gray-800">Copyright © {new Date().getFullYear()} - All right reserved by Talentsync Platform</p>
         </div>
     </footer>

@@ -21,17 +21,17 @@ const Home = () => {
     useDocumentTitle("Talentsync Platform | Home");
     
     return (
-        <div>
-            <section className='w-11/12 mx-auto'>
+        <div className='w-11/12 mx-auto'>
+            <section>
                 {slidesData.length > 0 && <Slider slidesData={slidesData} />}
             </section>
-            <section className='w-11/12 mx-auto'>
+            <section>
                 <UpcomingTasks upcomingTasksData={upcomingTasksData}></UpcomingTasks>
             </section>
-            <section className='w-11/12 mx-auto'>
+            <section>
                 <HowItWorks></HowItWorks>
             </section>
-            <section className='w-11/12 mx-auto'>
+            <section>
                 <Testimonials></Testimonials>
             </section>
         </div>

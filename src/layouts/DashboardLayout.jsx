@@ -17,7 +17,7 @@ const DashboardLayout = () => {
     }, [location.pathname, navigate]);
 
   return (
-    <div className="flex h-screen bg-[#EAE4D5] overflow-hidden">
+    <div className="flex h-screen bg-secondary overflow-hidden">
 
       {isSidebarOpen && (
         <div className="fixed inset-0 z-30 bg-black/40 md:hidden" onClick={() => setIsSidebarOpen(false)}></div>

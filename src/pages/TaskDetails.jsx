@@ -52,10 +52,10 @@ const TaskDetails = () => {
             <Navbar />
         </header>
         <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
-            <div className="bg-[#B6B09F] border-3 border-dotted border-[#EAE4D5] text-white rounded-lg shadow-sm py-4 px-6 text-center text-xl font-semibold tracking-wide">YOU BID FOR <span>{bidsCount}</span> OPPORTUNITY{bidsCount !== 1 ? 'IES' : ''}
+            <div className="bg-primary text-white rounded-lg shadow-sm py-4 px-6 text-center text-xl font-semibold tracking-wide">YOU BID FOR <span>{bidsCount}</span> OPPORTUNITY{bidsCount !== 1 ? 'IES' : ''}
             </div>
-            <section className="bg-[#EAE4D5] border-3 border-[#B6B09F] p-8 rounded-xl shadow-sm">
-                <h1 className="text-3xl md:text-4xl font-extrabold text-gray-800 mb-6">{title}</h1>
+            <section className="bg-secondary p-8 rounded-xl shadow-md">
+                <h1 className="text-3xl md:text-4xl font-extrabold text-neutral mb-6">{title}</h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 text-gray-700">
                     <div>
                         <h3 className="uppercase text-sm font-semibold text-yellow-600">Category</h3>
@@ -71,15 +71,15 @@ const TaskDetails = () => {
                     </div>
                     <div>
                         <h3 className="uppercase text-sm font-semibold text-yellow-600">Posted By</h3>
-                        <p className="mt-1 text-lg">{name}</p>
-                        <p className="text-gray-500 text-sm">{email}</p>
+                        <p className="mt-1 text-lg font-semibold">{name}</p>
+                        <p className="text-gray-500 text-sm font-medium">{email}</p>
                     </div>
                     <div>
                         <h3 className="uppercase text-sm font-semibold text-yellow-600">Deadline</h3>
                         <p className="mt-1 text-lg">{deadline}</p>
                     </div>
                 </div>
-                <button onClick={handleBid} className="btn mt-5 w-full bg-[#B6B09F] hover:bg-[#EAE4D5] border border-[#EAE4D5] hover:border-[#B6B09F] text-white hover:text-gray-700 shadow-none">Place Bid</button>
+                <button onClick={handleBid} className="btn mt-5 w-full bg-primary hover:bg-secondary border border-secondary hover:border-primary text-white hover:text-gray-700 shadow-none">Place Bid</button>
             </section>
         </main>
         <footer>

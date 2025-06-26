@@ -26,7 +26,7 @@ const Logout = () => {
         }
 
     return (
-        <button onClick={handleLogoutUser} className='bg-[#EAE4D5] border border-[#B6B09F] rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4 cursor-pointer'>Logout</button>
+        <button onClick={handleLogoutUser} className='bg-secondary border border-primary rounded-sm text-gray-800 text-xs md:text-base font-semibold px-2.5 py-2 md:px-4 cursor-pointer'>Logout</button>
     );
 };
 
