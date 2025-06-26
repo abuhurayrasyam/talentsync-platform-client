@@ -85,9 +85,6 @@ const AddTask = () => {
 
     return (
         <div>
-            <header className='sticky top-0 z-50'>
-                <Navbar></Navbar>
-            </header>
             <main>
                  <div className="hero bg-base-100 my-10">
                     <div className="card bg-base-100 w-full border border-[#B6B09F] max-w-sm shrink-0 shadow-sm pb-3">
@@ -128,9 +125,6 @@ const AddTask = () => {
                     </div>
                 </div>
             </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
         </div>
     );
 };

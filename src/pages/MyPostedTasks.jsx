@@ -1,32 +1,40 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { AuthContext } from '../context/Auth/AuthContext';
-import { Link, useLoaderData } from 'react-router';
+import { Link } from 'react-router';
 import { FaHeart, FaRegEdit } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import Loading from '../components/Loading';
 
 const MyPostedTasks = () => {
 
+    useDocumentTitle("Talentsync Platform | My Posted Tasks");
+
     const { user } = useContext(AuthContext);
 
-    const initialTaskData = useLoaderData();
-    const [myTasks, setMyTasks] = useState(initialTaskData);
+    const [myTasks, setMyTasks] = useState([]);
+
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
     if (user?.email) {
+        setLoading(true);
         fetch(`https://talentsync-platform.vercel.app/tasks?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             setMyTasks(data);
+            setLoading(false);
         });
     }
     window.scrollTo(0, 0);
-    }, [user?.email])
+    }, [user?.email, setLoading])
+
+    if(loading){
+        return <Loading></Loading>;
+    }
 
     const handleDeleteTask = (id) => {
         Swal.fire({
@@ -60,14 +68,9 @@ const MyPostedTasks = () => {
             }
         });
     }
-
-    useDocumentTitle("Talentsync Platform | My Posted Tasks");
-
+    
     return (
         <div>
-            <header className='sticky top-0 z-50'>
-                <Navbar></Navbar>
-            </header>
             <main className='min-h-screen mt-10'>
                 <div className="w-11/12 mx-auto overflow-x-auto">
                     {
@@ -140,9 +143,6 @@ const MyPostedTasks = () => {
                     }
                 </div>
             </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
         </div>
     );
 };

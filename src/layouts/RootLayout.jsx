@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import { Outlet } from 'react-router';
 import Footer from '../components/Footer';
 
-const HomeLayout = () => {
+const RootLayout = () => {
     return (
         <div>
             <header className='sticky top-0 z-50'>
@@ -19,4 +19,4 @@ const HomeLayout = () => {
     );
 };
 
-export default HomeLayout;
+export default RootLayout;

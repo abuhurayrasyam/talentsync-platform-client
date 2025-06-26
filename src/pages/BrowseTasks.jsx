@@ -16,9 +16,6 @@ const BrowseTasks = () => {
 
     return (
         <div>
-            <header className='sticky top-0 z-50'>
-                <Navbar></Navbar>
-            </header>
             <main className='min-h-screen mt-10'>
                 <div className="w-11/12 mx-auto overflow-x-auto">
                     <table className="table">
@@ -57,9 +54,6 @@ const BrowseTasks = () => {
                     </table>
                 </div>
             </main>
-            <footer>
-                <Footer></Footer>
-            </footer>
         </div>
     );
 };
