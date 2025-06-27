@@ -14,7 +14,7 @@ const Footer = () => {
                     <Logo></Logo>
                     <p className='text-sm text-black -ml-2 font-semibold block md:hidden lg:hidden'>Talentsync <span className='text-secondary'>Platform</span></p>
                 </div>
-                <p className="w-[300px] text-justify">Talentsync Platform connects task posters with skilled freelancers to get jobs done efficiently, securely, and on time. Empowering talent, simplifying tasks.</p>
+                <p className="text-neutral w-[300px] text-justify">Talentsync Platform connects task posters with skilled freelancers to get jobs done efficiently, securely, and on time. Empowering talent, simplifying tasks.</p>
             </nav>
             <nav>
                 <h6 className="footer-title">Contact</h6>
