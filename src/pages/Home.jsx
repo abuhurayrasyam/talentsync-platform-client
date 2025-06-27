@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router';
-import Slider from '../components/Slider';
-import HowItWorks from '../components/HowItWorks';
-import Testimonials from '../components/Testimonials';
-import UpcomingTasks from '../components/UpcomingTasks';
+import Slider from '../components/Home/Slider';
+import HowItWorks from '../components/Home/HowItWorks';
+import Testimonials from '../components/Home/Testimonials';
+import UpcomingTasks from '../components/Home/UpcomingTasks';
 import useDocumentTitle from '../hooks/useDocumentTitle';
-import PlatformStats from '../components/PlatformStats';
+import PlatformStats from '../components/Home/PlatformStats';
 
 const Home = () => {
 

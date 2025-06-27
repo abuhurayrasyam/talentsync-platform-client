@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Link, NavLink} from 'react-router';
-import logo from '../assets/logo.png'
+import logo from '../../assets/logo.png'
 
 const Sidebar = ({isSidebarOpen}) => {
 

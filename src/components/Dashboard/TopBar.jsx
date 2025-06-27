@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaBars } from 'react-icons/fa';
 import { IoMdClose } from 'react-icons/io';
-import Logout from './Logout';
-import ThemeToggle from './ThemeToggle';
+import Logout from '../Logout';
+import ThemeToggle from '../ThemeToggle';
 
 const TopBar = ({isSidebarOpen, setIsSidebarOpen}) => {
 

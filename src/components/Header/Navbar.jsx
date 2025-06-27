@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router';
 import 'react-tooltip/dist/react-tooltip.css';
-import Logout from './Logout';
-import UserAvatar from './UserAvatar';
-import { AuthContext } from '../context/Auth/AuthContext';
-import ThemeToggle from './ThemeToggle';
-import Logo from './Logo';
+import Logout from '../Logout';
+import UserAvatar from '../UserAvatar';
+import { AuthContext } from '../../context/Auth/AuthContext';
+import ThemeToggle from '../ThemeToggle';
+import Logo from '../Logo';
 
 const Navbar = () => {
 

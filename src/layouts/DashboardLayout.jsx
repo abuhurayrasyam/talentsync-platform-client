@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router";
-import Sidebar from "../components/Sidebar";
-import TopBar from "../components/TopBar";
+import Sidebar from "../components/Dashboard/Sidebar";
+import TopBar from "../components/Dashboard/TopBar";
 
 const DashboardLayout = () => {
 
