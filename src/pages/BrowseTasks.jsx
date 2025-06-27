@@ -43,7 +43,7 @@ const BrowseTasks = () => {
                                         <td>${taskData?.budget}</td>
                                         <td>{taskData?.deadline}</td>
                                         <th>
-                                            <Link to={`/task-details/${taskData?._id}`}><button className="bg-primary text-white hover:bg-secondary hover:text-gray-800 rounded-md px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm cursor-pointer">See Details</button></Link>
+                                            <Link to={`/dashboard/task-details/${taskData?._id}`}><button className="bg-primary text-white hover:bg-secondary hover:text-gray-800 rounded-md px-3 md:px-4 py-1 md:py-2 text-xs md:text-sm cursor-pointer">See Details</button></Link>
                                         </th>
                                     </tr>
                                 )

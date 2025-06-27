@@ -18,6 +18,7 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import TermsAndConditions from "../pages/TermsAndConditions";
 
 export const router = createBrowserRouter([
   {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         {
             path: "/contact-us",
             Component: ContactUs
+        },
+        {
+            path: "/terms-conditions",
+            Component: TermsAndConditions
         }
     ]
   },
@@ -83,6 +88,14 @@ export const router = createBrowserRouter([
         Component: BrowseTasks
       },
       {
+        path: "task-details/:id",
+        loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
+        hydrateFallbackElement: <Loading></Loading>,
+        element: <PrivateRoute>
+          <TaskDetails></TaskDetails>
+        </PrivateRoute>
+      },
+      {
         path: "add-task",
         element: <PrivateRoute>
           <AddTask></AddTask>
@@ -103,13 +116,5 @@ export const router = createBrowserRouter([
         </PrivateRoute>
       },
     ]
-  },
-  {
-    path: "/task-details/:id",
-    loader: ({params}) => fetch(`https://talentsync-platform.vercel.app/tasks/${params.id}`),
-    hydrateFallbackElement: <Loading></Loading>,
-    element: <PrivateRoute>
-      <TaskDetails></TaskDetails>
-    </PrivateRoute>
   }
 ]);

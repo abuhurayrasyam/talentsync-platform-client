@@ -56,7 +56,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end space-x-1.5 items-center">
                     <div className='hidden lg:block'><UserAvatar></UserAvatar></div>
-                    <div className='-mr-3 lg:mr-0'><ThemeToggle></ThemeToggle></div>
+                    <div className={`${user ? '-mr-3' : 'mr-0'} lg:mr-0`}><ThemeToggle></ThemeToggle></div>
                     {
                         user ? (
                             <>

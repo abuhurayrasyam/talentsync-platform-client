@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { useLoaderData } from 'react-router';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../context/Auth/AuthContext';
@@ -48,9 +46,6 @@ const TaskDetails = () => {
 
     return (
         <div>
-        <header className='sticky top-0 z-50'>
-            <Navbar />
-        </header>
         <main className="max-w-4xl mx-auto px-6 py-10 space-y-8">
             <div className="bg-primary text-white rounded-lg shadow-sm py-4 px-6 text-center text-xl font-semibold tracking-wide">YOU BID FOR <span>{bidsCount}</span> OPPORTUNITY{bidsCount !== 1 ? 'IES' : ''}
             </div>
@@ -82,9 +77,6 @@ const TaskDetails = () => {
                 <button onClick={handleBid} className="btn mt-5 w-full bg-primary hover:bg-secondary border border-secondary hover:border-primary text-white hover:text-gray-700 shadow-none">Place Bid</button>
             </section>
         </main>
-        <footer>
-            <Footer />
-        </footer>
         </div>
     );
 };

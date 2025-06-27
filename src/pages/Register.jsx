@@ -151,7 +151,7 @@ const Register = () => {
                     </div>
                     <div className='flex items-center gap-1 mt-2'>
                         <input type="checkbox" defaultChecked className="checkbox h-5 w-5" />
-                        <a className="link link-hover">Accept Term & Conditions</a>
+                        <Link to={'/terms-conditions'} target="_blank" className="link link-hover">Accept Term & Conditions</Link>
                     </div>
                     <input type="submit" className="btn btn-neutral border-dotted shadow-none border-gray-50 mt-4" value="Register" />
                     </form>

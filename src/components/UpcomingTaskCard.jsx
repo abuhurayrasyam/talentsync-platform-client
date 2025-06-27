@@ -19,7 +19,7 @@ const UpcomingTaskCard = ({ upcomingTaskData }) => {
             <div className="border-t border-dotted border-gray-400 py-2 mt-4 text-sm text-gray-600">
                 <p><span className="font-medium">Posted by:</span> {name}</p>
             </div>
-            <Link to={`/task-details/${_id}`}>
+            <Link to={`/dashboard/task-details/${_id}`}>
                 <button className="btn w-full bg-primary hover:bg-secondary rounded-md border border-secondary hover:border-primary text-gray-100 hover:text-gray-800 shadow-none">
                 See Details
                 </button>

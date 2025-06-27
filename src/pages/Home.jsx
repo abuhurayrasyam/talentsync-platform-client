@@ -5,6 +5,7 @@ import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import UpcomingTasks from '../components/UpcomingTasks';
 import useDocumentTitle from '../hooks/useDocumentTitle';
+import PlatformStats from '../components/PlatformStats';
 
 const Home = () => {
 
@@ -30,6 +31,9 @@ const Home = () => {
             </section>
             <section>
                 <HowItWorks></HowItWorks>
+            </section>
+            <section>
+                <PlatformStats></PlatformStats>
             </section>
             <section>
                 <Testimonials></Testimonials>
