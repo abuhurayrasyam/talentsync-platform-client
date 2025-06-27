@@ -3,11 +3,19 @@ import { FaFacebookF, FaHome, FaInstagram, FaPhoneAlt } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
 import { Link } from "react-router";
+import Logo from "../Logo";
 
 const Footer = () => {
   return (
     <footer className="bg-primary shadow-xl text-base-content">
         <div className="footer sm:footer-horizontal w-11/12 mx-auto p-5 lg:justify-around text-gray-900 my-5">
+            <nav>
+                <div className="flex items-end">
+                    <Logo></Logo>
+                    <p className='text-sm text-black -ml-2 font-semibold block md:hidden lg:hidden'>Talentsync <span className='text-secondary'>Platform</span></p>
+                </div>
+                <p className="w-[300px] text-justify">Talentsync Platform connects task posters with skilled freelancers to get jobs done efficiently, securely, and on time. Empowering talent, simplifying tasks.</p>
+            </nav>
             <nav>
                 <h6 className="footer-title">Contact</h6>
                 <div className="flex gap-2 items-center">
